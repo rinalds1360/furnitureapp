@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="8dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/kategorija"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/imageview"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                tools:text="Kategorija" />
+
+            <TextView
+                android:id="@+id/Cena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kategorija"
+                android:layout_toEndOf="@+id/imageview"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                tools:text="20.50 EUR" />
+
+            <TextView
+                android:id="@+id/apraksts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="apraksts apraksts apraksts apraksts aprakstsapraksts apraksts aprakstsaprakstsapraksts apraksts apraksts"
+                android:textAlignment="viewStart"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
