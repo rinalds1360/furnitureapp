@@ -25,13 +25,14 @@
                 tools:src="@drawable/ic_baseline_account_box_24"/>
 
             <EditText
-                android:id="@+id/editTextTextPersonName3"
+                android:id="@+id/lietotajvards"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Lietotājvārds vai e-pasts"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="22sp" />
 
         </LinearLayout>
 
@@ -48,13 +49,14 @@
                 android:src="@drawable/ic_baseline_lock_24" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/parole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="parole"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="22sp" />
 
         </LinearLayout>
 
