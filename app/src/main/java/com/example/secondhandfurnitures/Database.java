@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import com.example.secondhandfurnitures.fragments.FirstFragment;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import java.security.AccessControlContext;
 import java.util.ArrayList;
 
 public class Database {
@@ -33,6 +34,7 @@ public class Database {
     public Database(Context context) {
         mContext = context;
     }
+
 
     public void open() {
         mDatabaseHelper = new DatabaseHelper(mContext, DATABASE_NAME, null, DATABASE_VERSION);
@@ -98,6 +100,20 @@ public class Database {
             arrayList.add(cursor.getString(i));
         }
         return arrayList;
+    }
+
+    public boolean vaiEksisteDatubaze(String value, String column){
+        if (value.isEmpty() || column.isEmpty()){
+            return false;
+        }
+        Cursor cursor = mDB.rawQuery("SELECT DISTINCT "+column+" FROM lietotaji WHERE "+column+" ='"+value+"'", null);
+        cursor.moveToFirst();
+        if (!cursor.getString(0).isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 
