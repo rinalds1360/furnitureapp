@@ -1452,4 +1452,78 @@
         </item>
     </string-array>
 
+    <string-array name="furnitures">
+        <item>Izvēlieties kategoriju</item>
+        <item>Dīvāni</item>
+        <item>Mīkstie soli</item>
+        <item>Pufi</item>
+        <item>Sēžammaisi</item>
+        <item>Kumodes</item>
+        <item>Skapīši</item>
+        <item>Skapji</item>
+        <item>Vitrīnas</item>
+        <item>TV galdi</item>
+        <item>Vannas istaba</item>
+        <item>Virtuves galdi</item>
+        <item>Krēsli</item>
+        <item>Žurnāla galdi</item>
+        <item>Datorgaldi</item>
+        <item>Datorkrēsli</item>
+        <item>Gultas</item>
+        <item>Matrači</item>
+        <item>Dārza mēbeles</item>
+    </string-array>
+
+    <string-array name="pilsetas">
+        <item>Izvēlieties pilsētu</item>
+        <item>Daugavpils</item>
+        <item>Jēkabpils</item>
+        <item>Jelgava</item>
+        <item>Jūrmala</item>
+        <item>Liepāja</item>
+        <item>Ogre</item>
+        <item>Rēzekne</item>
+        <item>Rīga</item>
+        <item>Valmiera</item>
+        <item>Ventspils</item>
+        <item>Aizkraukles novads</item>
+        <item>Alūksnes novads</item>
+        <item>Augšdaugavas novads</item>
+        <item>Ādažu novads</item>
+        <item>Balvu novads</item>
+        <item>Bauskas novads</item>
+        <item>Cēsu novads</item>
+        <item>Dienvidkurzemes novads</item>
+        <item>Dobeles novads</item>
+        <item>Gulbenes novads</item>
+        <item>Jelgavas novads</item>
+        <item>Jēkabpils novads</item>
+        <item>Krāslavas novads</item>
+        <item>Kuldīgas novads</item>
+        <item>Ķekavas novads</item>
+        <item>Limbažu novads</item>
+        <item>Līvānu novads</item>
+        <item>Ludzas novads</item>
+        <item>Madonas novads</item>
+        <item>Mālpils novads</item>
+        <item>Mārupes novads</item>
+        <item>Ogres novads</item>
+        <item>Olaines novads</item>
+        <item>Preiļu novads</item>
+        <item>Rēzeknes novads</item>
+        <item>Rīgas novads</item>
+        <item>Ropažu novads</item>
+        <item>Saldus novads</item>
+        <item>Skrīveru novads</item>
+        <item>Talsu novads</item>
+        <item>Tukuma novads</item>
+        <item>Valkas novads</item>
+        <item>Valmieras novads</item>
+        <item>Ventspils novads</item>
+        <item>Viesītes novads</item>
+        <item>Viļakas novads</item>
+        <item>Viļānu novads</item>
+        <item>Zilupes novads</item>
+    </string-array>
+
 </resources>

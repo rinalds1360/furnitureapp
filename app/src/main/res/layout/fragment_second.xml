@@ -1,15 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SecondFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="second fragment"
-    android:layout_centerInParent="true"
-    android:textSize="32dp"/>
+        android:id="@+id/mebKategorija"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="10dp"
+        android:text="Kategorija:"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerkategorija"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/cena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Cena:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/mebKategorija"
+            app:layout_constraintTop_toBottomOf="@+id/mebKategorija" />
+
+        <TextView
+            android:id="@+id/pilseta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Pilsēta:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/cena"
+            app:layout_constraintTop_toBottomOf="@+id/bezmaksas" />
+
+        <TextView
+            android:id="@+id/mebapraksts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Apraksts:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/pilseta"
+            app:layout_constraintTop_toBottomOf="@+id/pilseta" />
+
+    <Spinner
+        android:id="@+id/spinnerkategorija"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mebKategorija"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mebKategorija" />
+
+        <CheckBox
+        android:id="@+id/bezmaksas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:text="Bezmaksas"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EUR"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cena"
+            app:layout_constraintStart_toEndOf="@+id/cenavalue" />
+
+    <Spinner
+        android:id="@+id/spinnerpilseta"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/pilseta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pilseta" />
+
+        <EditText
+            android:id="@+id/aprakstsvalue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Sāciet rakstīt aprakstu šeit"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mebapraksts" />
+
+        <EditText
+            android:id="@+id/cenavalue"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginBottom="-10dp"
+            android:ems="10"
+            android:hint="Cena"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/cena"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
