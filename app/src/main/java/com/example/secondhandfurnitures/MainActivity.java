@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tabLayout = findViewById(R.id.tab_layout);
+        tabLayout = findViewById(R.id.tablayout);
         viewPager2 = findViewById(R.id.view_pager);
         myViewPagerAdapter = new MyViewPagerAdapter(this);
         viewPager2.setAdapter(myViewPagerAdapter);

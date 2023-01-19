@@ -9,30 +9,34 @@
     tools:visibility="visible">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+        android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/visi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="visi" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/ievietot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ievietot"
             tools:visibility="visible" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/mani"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="mani" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/ieiet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ieiet" />
+            android:text="profils" />
 
     </com.google.android.material.tabs.TabLayout>
 
@@ -40,6 +44,6 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tab_layout" />
+        android:layout_below="@id/tablayout" />
 
 </RelativeLayout>

@@ -1,5 +1,8 @@
 package com.example.secondhandfurnitures;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterTest {
 
 
@@ -13,7 +16,7 @@ public class RegisterTest {
     }
 
     public static boolean passwordCompatibility(String password1, String password2){
-        if (password1 == password2){
+        if (password1.equals(password2)){
             return true;
         } else {
             return false;
@@ -22,12 +25,16 @@ public class RegisterTest {
 
     public static boolean passwordIsGood(String password){
         String pattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})";
-        return password.matches(pattern);
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(password);
+        return matcher.find();
     }
 
     public static boolean emailIsGood(String email){
-        String pattern = "^(?=.*[^@])@(?=.*[^@])";
-        return email.matches(pattern);
+        String pattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,6}$";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher = regex.matcher(email);
+        return matcher.find();
     }
 
 }

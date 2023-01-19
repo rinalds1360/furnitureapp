@@ -108,12 +108,42 @@ public class Database {
         }
         Cursor cursor = mDB.rawQuery("SELECT DISTINCT "+column+" FROM lietotaji WHERE "+column+" ='"+value+"'", null);
         cursor.moveToFirst();
-        if (!cursor.getString(0).isEmpty()) {
+        if (cursor.getCount() < 0 || cursor.getCount() > 0) {
             return true;
         } else {
             return false;
         }
+    }
 
+    public void izveidoLietotaju(String name, String surname, String email, String code, String phone, String username, String password){
+        Cursor cursor = mDB.rawQuery("INSERT INTO lietotaji (vards, uzvards, epasts, telefonavalstskods, telefonanumurs, lietotajvards, parole)\n" +
+                "VALUES ('"+name+"', '"+surname+"', '"+email+"', +'"+code+"', '"+phone+"', '"+username+"', '"+password+"');", null);
+        cursor.moveToFirst();
+    }
+
+    public String[] ielogosanas(String user, String password){
+        if (user.equals("") || password.equals("")){
+            return new String[0];
+        }
+        Cursor cursor = mDB.rawQuery("SELECT lietotajaid, vards, uzvards, epasts, telefonavalstskods, telefonanumurs, lietotajvards FROM lietotaji\n" +
+                "WHERE (epasts = '"+user+"' OR lietotajvards = '"+user+"') AND parole = '"+password+"'", null);
+        cursor.moveToFirst();
+        if (cursor.getCount() < 0 || cursor.getCount() > 0) {
+            String[] data = new String[cursor.getColumnCount()];
+            for (int i = 0; i < cursor.getColumnCount(); i++) {
+                data[i] = cursor.getString(i);
+            }
+            return data;
+        } else {
+            return new String[0];
+        }
+    }
+
+    public int getID (String username){
+        Cursor cursor = mDB.rawQuery("SELECT lietotajaid FROM lietotaji\n" +
+                "WHERE lietotajvards = '"+username+"'",null);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
     }
 
 

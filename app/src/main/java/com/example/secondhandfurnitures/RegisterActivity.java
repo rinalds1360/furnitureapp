@@ -4,6 +4,7 @@ import static java.security.AccessController.getContext;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
         Button btnRegister = findViewById(R.id.btnregistreties);
         Database db = new Database(this);
         db.open();
+        LocalDatabase localDB = new LocalDatabase(this);
+        localDB.open();
 
         Resources res = getResources();
         String[] countries = res.getStringArray(R.array.country_data);
@@ -78,26 +81,37 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strName = name.getText().toString();
-                String strSurname = surname.getText().toString();
-                String strEmail = email.getText().toString();
-                String strPhone = phone.getText().toString();
-                String strCode = code.getText().toString();
-                String strUsername = username.getText().toString();
-                String strPassword1 = password1.getText().toString();
-                String strPassword2 = password2.getText().toString();
+                String strName = name.getText().toString().trim();
+                String strSurname = surname.getText().toString().trim();
+                String strEmail = email.getText().toString().trim();
+                String strPhone = phone.getText().toString().trim();
+                String strCode = code.getText().toString().trim();
+                String strUsername = username.getText().toString().trim();
+                String strPassword1 = password1.getText().toString().trim();
+                String strPassword2 = password2.getText().toString().trim();
                 if (!RegisterTest.inputTest(strName,strSurname,strEmail,strPhone,strCode,strUsername,strPassword1,strPassword2)) {
                     Toast.makeText(getApplicationContext(), "Visi lauki ir jāizpilda", Toast.LENGTH_LONG).show();
                 } else if(db.vaiEksisteDatubaze(strEmail, "epasts")){
                     Toast.makeText(getApplicationContext(), "epasts ir jau piereģistrēts", Toast.LENGTH_LONG).show();
-                } else if(db.vaiEksisteDatubaze(strUsername, "lietotajvards")){
+                } else if(!RegisterTest.emailIsGood(strEmail)) {
+                    Toast.makeText(getApplicationContext(), "epasts neeksistē", Toast.LENGTH_LONG).show();
+                } else if (db.vaiEksisteDatubaze(strUsername, "lietotajvards")) {
                     Toast.makeText(getApplicationContext(), "lietotajvards ir jau pieregistrets", Toast.LENGTH_LONG).show();
                 } else if(!RegisterTest.passwordIsGood(strPassword1)) {
                     Toast.makeText(getApplicationContext(), "Parolei jābūt vismaz 8 simbolus garai un jāiekļauj cipari, speciālie simboli un lielie burti", Toast.LENGTH_LONG).show();
                 } else if(!RegisterTest.passwordCompatibility(strPassword1,strPassword2)){
                     Toast.makeText(getApplicationContext(), "Paroles nesakrīt", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Tiek veikta profila izveide", Toast.LENGTH_LONG).show();
+                    db.izveidoLietotaju(strName,strSurname,strEmail,strCode,strPhone,strUsername,strPassword1);
+                    int userID = db.getID(strUsername);
+                    db.close();
+                    localDB.login(userID,strName,strSurname,strEmail,strCode,strPhone,strUsername,strPassword1);
+                    localDB.close();
+                    Toast.makeText(getApplicationContext(), "Profils izveidots", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
                 }
 
             }

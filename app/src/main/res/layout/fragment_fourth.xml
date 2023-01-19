@@ -22,7 +22,8 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/ic_baseline_account_box_24"/>
+                android:src="@drawable/ic_baseline_email_24"
+                app:srcCompat="@drawable/ic_baseline_email_24" />
 
             <EditText
                 android:id="@+id/lietotajvards"
@@ -46,7 +47,8 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_baseline_lock_24" />
+                android:src="@drawable/ic_baseline_lock_24"
+                app:srcCompat="@drawable/ic_baseline_lock_24" />
 
             <EditText
                 android:id="@+id/parole"
@@ -66,7 +68,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/registreties"
+                android:id="@+id/btnRedigetDatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -78,7 +80,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/ieiet"
+                android:id="@+id/btnMainitParoli"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
