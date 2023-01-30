@@ -14,7 +14,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
-        imageView = itemView.findViewById(R.id.imageview);
+        imageView = itemView.findViewById(R.id.imageview_image);
         kategorijaView = itemView.findViewById(R.id.kategorija);
         cenaView = itemView.findViewById(R.id.Cena);
         aprakstsView = itemView.findViewById(R.id.apraksts);

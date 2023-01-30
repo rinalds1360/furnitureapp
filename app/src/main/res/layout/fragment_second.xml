@@ -5,23 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:overScrollMode="never"
     tools:context=".fragments.SecondFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/mebKategorija"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="10dp"
-        android:text="Kategorija:"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerkategorija"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/mebKategorija"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="10dp"
+            android:text="Kategorija:"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerkategorija"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/cena"
@@ -53,26 +55,26 @@
             app:layout_constraintEnd_toEndOf="@+id/pilseta"
             app:layout_constraintTop_toBottomOf="@+id/pilseta" />
 
-    <Spinner
-        android:id="@+id/spinnerkategorija"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mebKategorija"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mebKategorija" />
+        <Spinner
+            android:id="@+id/spinnerkategorija"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mebKategorija"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/mebKategorija" />
 
         <CheckBox
-        android:id="@+id/bezmaksas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:text="Bezmaksas"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+            android:id="@+id/bezmaksas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:text="Bezmaksas"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
         <TextView
             android:id="@+id/textView23"
@@ -83,16 +85,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/cena"
             app:layout_constraintStart_toEndOf="@+id/cenavalue" />
 
-    <Spinner
-        android:id="@+id/spinnerpilseta"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/pilseta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pilseta" />
+        <Spinner
+            android:id="@+id/spinnerpilseta"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/pilseta"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/pilseta" />
 
         <EditText
             android:id="@+id/aprakstsvalue"
@@ -119,5 +121,42 @@
             android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="@+id/cena"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/attels1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_add_photo_alternate_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aprakstsvalue" />
+
+        <Button
+            android:id="@+id/btnPievienot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
+            android:text="Pievienot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewPhotos" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPhotos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:isScrollContainer="false"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="wrap"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/attels1" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
