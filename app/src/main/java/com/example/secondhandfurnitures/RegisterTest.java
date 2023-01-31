@@ -1,5 +1,7 @@
 package com.example.secondhandfurnitures;
 
+import android.text.Editable;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,6 +37,15 @@ public class RegisterTest {
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(email);
         return matcher.find();
+    }
+
+    public static String checkAddConditions(String category, String price, boolean forFree, String city, String description, int photoCount){
+        if (category.equals("Izvēlieties kategoriju")) return "Nepieciešams izvēlēties kategoriju";
+        if (city.equals("Izvēlieties pilsētu")) return "Nepieciešams izvēlēties pilsētu";
+        if (description.length()<20) return "Aprakstam jābūt vismaz 20 rakstzīmēm garam";
+        if (photoCount<1) return "Nepieciešams pievienot fotogrāfiju";
+        if (price.equals("")) return "norādiet cenu";
+        return null;
     }
 
 }

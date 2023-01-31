@@ -2,6 +2,7 @@ package com.example.secondhandfurnitures;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +18,13 @@ import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
     private Context mContext;
-    private List<Uri> mImageUris;
+    private List<Bitmap> mBitmaps;
+    private OnItemClickListener mListener;
 
-    public ImageAdapter(Context context, List<Uri> imageUris) {
+    public ImageAdapter(Context context, List<Bitmap> bitmaps, OnItemClickListener listener) {
         mContext = context;
-        mImageUris = imageUris;
+        mBitmaps = bitmaps;
+        mListener = listener;
     }
 
     @NonNull
@@ -33,13 +36,23 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        Uri imageUri = mImageUris.get(position);
-        Glide.with(mContext).load(imageUri).into(holder.mImageView);
+        Bitmap bitmap = mBitmaps.get(holder.getAdapterPosition());
+        holder.mImageView.setImageBitmap(bitmap);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return mImageUris.size();
+        return mBitmaps.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
     class ImageViewHolder extends RecyclerView.ViewHolder {

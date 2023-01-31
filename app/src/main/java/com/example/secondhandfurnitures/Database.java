@@ -1,16 +1,23 @@
 package com.example.secondhandfurnitures;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 
 import com.example.secondhandfurnitures.fragments.FirstFragment;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.security.AccessControlContext;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class Database {
 
@@ -145,6 +152,42 @@ public class Database {
         cursor.moveToFirst();
         return cursor.getInt(0);
     }
+
+    public void addAd (String category, String price, String city, Boolean forFree, String description, List<Uri> photos, int authorId){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        String formattedDate = day+"."+month+"."+year;
+        //SQLiteDatabase db = mDB.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("kategorija", category);
+        values.put("cena", price);
+        values.put("pilseta", city);
+        values.put("bezmaksas", forFree);
+        values.put("apraksts", description);
+        values.put("autoraid", authorId);
+        values.put("datums", formattedDate);
+        long id = mDB.insert("sludinajumi", null, values);
+
+        ContentResolver cr = mContext.getContentResolver();
+        for (Uri imageUri : photos) {
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(cr, imageUri);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] image = stream.toByteArray();
+
+                Cursor cursor = mDB.rawQuery("INSERT INTO atteli (sludinajumaid, attels)\n" +
+                        "VALUES ('"+id+"','"+image+"')",null);
+                cursor.moveToFirst();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 
 
 }
